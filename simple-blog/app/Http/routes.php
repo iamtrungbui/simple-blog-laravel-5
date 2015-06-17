@@ -19,8 +19,12 @@ Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
+ 
+Route::get( '/' , [ 'as' => 'homepage.index', 'uses' => 'PagesController@index' ] );
 
-Route::get('/', [ 'as' => 'homepage.index', 'uses' => 'PagesController@index' ] );
-
-Route::get('/articles/', [ 'as' => 'article.index', 'uses' => 'ArticleController@index' ] );
-Route::get('/articles/{id}', [ 'as' => 'article.show', 'uses' => 'ArticleController@show' ] );
+Route::get( '/articles/' , [ 'as' => 'article.index', 'uses' => 'ArticleController@index' ] );
+post( '/articles' , [ 'as' => 'article.store', 'uses' => 'ArticleController@store' ] );
+get( '/articles/create' , [ 'as' => 'article.create' , 'uses' => 'ArticleController@create' ]);
+get( '/articles/{id}/edit' , [ 'as' => 'article.edit' , 'uses' => 'ArticleController@edit' ] );
+put( '/articles/{id}' , [ 'as' => 'article.update' , 'uses' => 'ArticleController@update' ]);
+Route::get( '/articles/{id}' , [ 'as' => 'article.show', 'uses' => 'ArticleController@show' ] );

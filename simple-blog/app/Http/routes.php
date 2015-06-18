@@ -11,11 +11,21 @@
 |
 */
 
-Route::get('/', 'WelcomeController@index');
+// Route::get('/', 'WelcomeController@index');
 
-Route::get('home', 'HomeController@index');
+// Route::get('home', 'HomeController@index');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
+ 
+get( '/' , [ 'as' => 'homepage.index', 'uses' => 'PagesController@index' ] );
+
+get( '/articles/' , [ 'as' => 'article.index', 'uses' => 'ArticleController@index' ] );
+post( '/articles' , [ 'as' => 'article.store', 'uses' => 'ArticleController@store' ] );
+get( '/articles/create' , [ 'as' => 'article.create' , 'uses' => 'ArticleController@create' ] );
+get( '/articles/{id}/edit' , [ 'as' => 'article.edit' , 'uses' => 'ArticleController@edit' ] );
+put( '/articles/{id}' , [ 'as' => 'article.update' , 'uses' => 'ArticleController@update' ] );
+delete('/articles/{id}' , [ 'as' => 'article.detroy', 'uses' => 'ArticleController@detroy' ] );
+get( '/articles/{id}' , [ 'as' => 'article.show', 'uses' => 'ArticleController@show' ] );

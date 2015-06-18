@@ -1,7 +1,7 @@
 @extends('layout.master')
 
 @section('head.title')
-	Simple Blog | Create new article
+	Simple Blog | Update article
 @stop
 
 @section('head.css')

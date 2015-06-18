@@ -1,7 +1,7 @@
 $(function(){
     $('#content').redactor({
-    	minHeight: 240,
-    	maxHeight: 240,
+    	minHeight: 220,
+    	maxHeight: 220,
     	placeholder: 'Enter a content...'
     });
 

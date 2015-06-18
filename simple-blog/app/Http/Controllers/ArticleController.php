@@ -11,7 +11,7 @@ use App\Http\Requests\ArticleFormRequest;
 class ArticleController extends Controller {
 
 	public function index() {
-		$articles = Article::orderBy('id','DESC')->get();
+		$articles = Article::orderBy('id','DESC')->paginate(5);
 		return view( 'articles.index' )->with( [ 'articles' => $articles ] );
 	}
 
@@ -56,5 +56,14 @@ class ArticleController extends Controller {
 			return redirect()->route( 'article.edit',$id )->withInput();
 		}
 	}
+
+	public function detroy( $id ) {
+		$article = Article::find( $id );
+		if($article->delete()){
+			return redirect()->route( 'article.index',$id)->with( 'message', "Deleted successfull" );
+		} else {
+			return redirect()->route( 'article.index', $id)->with( 'message', 'Deleted Faild' );
+		}
+	} 
 
 }
